@@ -3,7 +3,7 @@
 1. To clean install,
 `mvn clean install`
 
-2. To run all the jobs, `./mvnw spring:boot run`. It will run all the `@Scheduled` jobs and all one time jobs.
+2. To run all the jobs, `./mvnw spring-boot:run`. It will run all the `@Scheduled` jobs and all one time jobs.
 
 ## Architecture
 
