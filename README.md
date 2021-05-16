@@ -7,9 +7,15 @@
 
 ## Architecture
 
-This system heavily uses SPring batch architecture,
+This system heavily uses Spring batch architecture,
 
 ![Alt text](/src/main/resources/image/spring-batch-reference-model.png?raw=true "Spring batch architecture")
+
+We are using H2 database for storing job and step related details and jobs data,
+
+![Alt text](/src/main/resources/image/spring-meta-data-erd.png?raw=true "Spring batch tables")
+
+Note - Both images are referred from spring website
 
 ## Jobs
 Below are the jobs,
@@ -90,4 +96,4 @@ Read more about the tables https://docs.spring.io/spring-batch/docs/current/refe
 
 ## Point to improve 
 - If we want to run distributed system jobs like Apache spark, then, we can use external schedule and create shell scripts to wrap the calls of either spark-submit or spring batch.
-- Running multiple jobs scheduled at same time with priority would require us to create our own framework using PriorityBlockingQueue and Executor service to execute jobs. This would require creating an entire framework.
+- Running multiple jobs scheduled at same time with priority would require us to create our own framework using PriorityBlockingQueue and Executor service to execute jobs.
