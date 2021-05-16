@@ -16,6 +16,7 @@ As Spring batch already maintains any of the below execution status,
 - FAILED
 - ABANDONED
 - UNKNOWN
+
 Defined in class BatchStatus
 I have not created a seperate table to store the status of Job like COMPLETED, QUEUED, RUNNING, FAILED
 
@@ -25,18 +26,18 @@ http://localhost:8080/h2-console
 - password : 
 
 ## Queries to access Spring batch job and step tables
-SELECT * FROM BATCH_JOB_EXECUTION ;
-SELECT * FROM BATCH_JOB_EXECUTION_CONTEXT ;
-SELECT * FROM BATCH_JOB_EXECUTION_PARAMS ;
-SELECT * FROM BATCH_JOB_INSTANCE ;
-SELECT * FROM BATCH_STEP_EXECUTION ;
-SELECT * FROM BATCH_STEP_EXECUTION_CONTEXT ;
+1. SELECT * FROM BATCH_JOB_EXECUTION ;
+2. SELECT * FROM BATCH_JOB_EXECUTION_CONTEXT ;
+3. SELECT * FROM BATCH_JOB_EXECUTION_PARAMS ;
+4. SELECT * FROM BATCH_JOB_INSTANCE ;
+5. SELECT * FROM BATCH_STEP_EXECUTION ;
+6. SELECT * FROM BATCH_STEP_EXECUTION_CONTEXT ;
 
 Read more about the tables https://docs.spring.io/spring-batch/docs/current/reference/html/schema-appendix.html.
 
 ## Queries to access Job tables
-SELECT * FROM PEOPLE ;
-SELECT * FROM TRANSACTION_DETAIL ;
+1. SELECT * FROM PEOPLE ;
+2. SELECT * FROM TRANSACTION_DETAIL ;
 
 ## Notes
 1. Rollback steps in case of Job/ Step failure can be written in JobListener/ StepListener.
