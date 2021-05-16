@@ -25,6 +25,7 @@ Person job has one step and below mentioned details of reader, writer and proces
 1. **reader** - Read csv file person-data.csv
 2. **processor** - Process Person into Person with first name and last name in uppercase
 3. **writer** - Write List into H2 database
+
 Scheduled - ( */10 * * * * * ) Reoccurring job every 10 secs
 
 #### Transaction job
@@ -36,11 +37,13 @@ Transaction job has two steps,
 3. **writer** - Write List into H2 database
 **Step 2**
 1. Tasklet to print logger. (Can be used to send mails)
+
 Scheduled - ( */10 * * * * * ) Reoccurring job every 10 secs
 
 #### Random Number job
 Random Number Job has one below step,
 1. Tasklet based step to print random number.
+
 Scheduled - Run immediately once after start up. 
 
 
