@@ -35,6 +35,7 @@ Transaction job has two steps,
 1. **reader** - Read csv file transaction-data.csv
 2. **processor** - Process Transaction into Transaction with amount updated.
 3. **writer** - Write List into H2 database
+
 **Step 2**
 1. Tasklet to print logger. (Can be used to send mails)
 
