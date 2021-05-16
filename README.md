@@ -5,11 +5,37 @@
 
 2. To run all the jobs, `./mvnw spring:boot run`. It will run all the `@Scheduled` jobs and all one time jobs.
 
-3. Run job adhoc
-java -jar ./target/job-management-system-0.0.1-SNAPSHOT.jar -Dspring.batch.job.names=runPersonJob
-
 ## Jobs
-Jobs that are defined in spring batch based Java annotation configuration.
+Below are the jobs,
+
+#### Person job
+Person job has one step and below mentioned details of reader, writer and processor,
+1. **reader** - Read csv file person-data.csv
+2. **processor** - Process Person into Person with first name and last name in uppercase
+3. **writer** - Write List into H2 database
+Scheduled - ( */10 * * * * * ) Reoccurring job every 10 secs
+
+#### Transaction job
+Transaction job has two steps,
+
+**Step 1**
+1. **reader** - Read csv file transaction-data.csv
+2. **processor** - Process Transaction into Transaction with amount updated.
+3. **writer** - Write List into H2 database
+**Step 2**
+1. Tasklet to print logger. (Can be used to send mails)
+Scheduled - ( */10 * * * * * ) Reoccurring job every 10 secs
+
+#### Random Number job
+Random Number Job has one below step,
+1. Tasklet based step to print random number.
+Scheduled - Run immediately once after start up. 
+
+
+All Jobs use Spring batch Java annotation configuration.
+
+Spring scheduler is used to schedule jobs.
+
 As Spring batch already maintains any of the below execution status,
 - COMPLETED
 - STARTING
@@ -21,7 +47,7 @@ As Spring batch already maintains any of the below execution status,
 - UNKNOWN
 
 Defined in class BatchStatus
-I have not created a seperate table to store the status of Job like COMPLETED, QUEUED, RUNNING, FAILED
+I have not created a separate table to store the status of Job like COMPLETED, QUEUED, RUNNING, FAILED
 
 ## Access H2 console
 http://localhost:8080/h2-console
