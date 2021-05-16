@@ -5,6 +5,9 @@
 
 2. To run all the jobs, `./mvnw spring:boot run`. It will run all the `@Scheduled` jobs and all one time jobs.
 
+3. Run job adhoc
+java -jar ./target/job-management-system-0.0.1-SNAPSHOT.jar -Dspring.batch.job.names=runPersonJob
+
 ## Jobs
 Jobs that are defined in spring batch based Java annotation configuration.
 As Spring batch already maintains any of the below execution status,

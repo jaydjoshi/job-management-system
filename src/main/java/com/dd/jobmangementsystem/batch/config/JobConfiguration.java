@@ -1,7 +1,8 @@
 package com.dd.jobmangementsystem.batch.config;
 
 import com.dd.jobmangementsystem.batch.job.PersonJobDetail;
-import com.dd.jobmangementsystem.batch.job.TransactionDetail;
+import com.dd.jobmangementsystem.batch.job.RandomNumberJobDetail;
+import com.dd.jobmangementsystem.batch.job.TransactionJobDetail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.JobParameter;
@@ -52,10 +53,13 @@ public class JobConfiguration {
 	private JobExplorer jobExplorer;
 
 	@Autowired
-	private TransactionDetail transactionDetail;
+	private TransactionJobDetail transactionJobDetail;
 
 	@Autowired
 	private PersonJobDetail personJobDetail;
+
+	@Autowired
+	private RandomNumberJobDetail randomNumberJobDetail;
 
 	@Bean
 	public ResourcelessTransactionManager transactionManager() {
@@ -130,6 +134,14 @@ public class JobConfiguration {
 	 * Scheduled every 10 secs
 	 */
 	@Scheduled(cron = "*/10 * * * * *")
+	public void runScheduledPersonJob() {
+		runPersonJob();
+	}
+
+	/**
+	 * Run persons job
+	 *
+	 */
 	public void runPersonJob() {
 		Map<String, JobParameter> confMap = new HashMap<>();
 		confMap.put("time", new JobParameter(System.currentTimeMillis()));
@@ -147,13 +159,37 @@ public class JobConfiguration {
 	 * Scheduled every 10 secs
 	 */
 	@Scheduled(cron = "*/10 * * * * *")
+	public void runScheduledTransactionJob() {
+		runTransactionJob();
+	}
+
+	/**
+	 * Run transactions job
+	 *
+	 */
 	public void runTransactionJob() {
 		Map<String, JobParameter> confMap = new HashMap<>();
 		confMap.put("time", new JobParameter(System.currentTimeMillis()));
 		confMap.put("priority", new JobParameter(2l));
 		JobParameters jobParameters = new JobParameters(confMap);
 		try {
-			jobLauncher().run(transactionDetail.getTransactionJob(), jobParameters);
+			jobLauncher().run(transactionJobDetail.getTransactionJob(), jobParameters);
+		} catch (Exception ex) {
+			LOGGER.error(ex.getMessage());
+		}
+	}
+
+	/**
+	 * Run transactions job
+	 * Run once
+	 */
+	public void runRandomNumberJob() {
+		Map<String, JobParameter> confMap = new HashMap<>();
+		confMap.put("time", new JobParameter(System.currentTimeMillis()));
+		JobParameters jobParameters = new JobParameters(confMap);
+		try {
+
+			jobLauncher().run(randomNumberJobDetail.getRandomNumberJob(), jobParameters);
 		} catch (Exception ex) {
 			LOGGER.error(ex.getMessage());
 		}

@@ -32,10 +32,10 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableBatchProcessing
-public class TransactionDetail {
+public class TransactionJobDetail {
 
     private final static Logger LOGGER =
-            LoggerFactory.getLogger(TransactionDetail.class);
+            LoggerFactory.getLogger(TransactionJobDetail.class);
 
     @Autowired
     private JobBuilderFactory jobBuilderFactory;

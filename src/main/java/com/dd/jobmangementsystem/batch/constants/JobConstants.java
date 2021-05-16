@@ -11,4 +11,6 @@ public class JobConstants {
     public static String TRANSACTION_STEP = "TransactionStep";
     public static int TRANSACTION_JOB_CHUNK_SIZE = 20;
     public static final String TRANSACTION_READER = "transactionItemReader";
+
+    public static String RANDOM_NUMBER_JOB = "RandomNumberJob";
 }
