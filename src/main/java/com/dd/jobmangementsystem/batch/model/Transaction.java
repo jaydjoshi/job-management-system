@@ -1,7 +1,5 @@
 package com.dd.jobmangementsystem.batch.model;
 
-import java.time.LocalDateTime;
-
 public class Transaction {
 
     private int personId;

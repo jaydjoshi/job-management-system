@@ -1,12 +1,10 @@
 package com.dd.jobmangementsystem.batch.job;
 
 
-
-
 import com.dd.jobmangementsystem.batch.constants.JobConstants;
 import com.dd.jobmangementsystem.batch.constants.QueryConstants;
-import com.dd.jobmangementsystem.batch.listener.*;
 import com.dd.jobmangementsystem.batch.listener.StepListener;
+import com.dd.jobmangementsystem.batch.listener.*;
 import com.dd.jobmangementsystem.batch.model.Person;
 import com.dd.jobmangementsystem.batch.processor.PersonItemProcessor;
 import org.springframework.batch.core.*;
